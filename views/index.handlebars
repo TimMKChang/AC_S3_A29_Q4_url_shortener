@@ -1,0 +1,21 @@
+<div class="container text-center" style="width: 50vw;">
+  <h1>URL Shortener</h1>
+  <div class="my-3"><i id="title-icon" class="fas fa-link"></i></div>
+  <form action="/" , method="POST">
+    <input type="url" placeholder="Input URL here" name="url" class="form-control" required>
+    <button type="submit" class="btn btn-primary my-3">Shorten</button>
+  </form>
+  {{#if url}}
+  <h3>Success! Please use this link:</h3>
+  <a href="{{original_url}}" style="font-size: 2rem;" class="d-block mb-3 text-info">{{full_shorten_url}}</a>
+
+  <input id="input_full_url" type="hidden" value="{{full_shorten_url}}">
+
+  <div id="btn_container">
+    <button class="btn btn-success" onclick="copy_url()">
+      <span>Copy to clipboard</span>
+    </button>
+    <button id="show_copy" class="btn btn-secondary">copied</button>
+  </div>
+  {{/if}}
+</div>
