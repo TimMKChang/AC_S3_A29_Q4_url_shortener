@@ -29,6 +29,11 @@ app.use('/', express.static('public'))
 // require routes
 app.use('/', require('./routes/home'))
 
+// for any other unused routes
+app.use(function (req, res, next) {
+  res.status(404).render('error404');
+});
+
 app.listen(process.env.PORT || port, () => {
   console.log(`App is running on localhost:${port}`)
 })

@@ -32,6 +32,9 @@ router.get('/:shorten_url', (req, res) => {
   Url.findOne({ shorten_url: req.params.shorten_url })
     .lean()
     .then(url => {
+      if (!url) {
+        return res.status(404).render('error404');
+      }
       return res.redirect(`${url.original_url}`)
     })
     .catch(err => {
